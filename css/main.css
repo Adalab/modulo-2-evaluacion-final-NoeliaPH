@@ -1,0 +1,9 @@
+.body {
+    width: 100vh;
+    /*background-image: url("https://1.bp.blogspot.com/-0z14z5Vvo1Q/U7bLlGI13RI/AAAAAAAADjc/L9dNf2_c14c/s1600/naruto.png");
+    background: linear-gradient(blue, white);*/
+    background: radial-gradient(circle, rgb(240, 152, 152), white);
+}
+.border {
+    border: red 3px solid;
+}
