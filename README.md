@@ -18,8 +18,6 @@ Esto nos devolverá desde API un listado de series, seleccionamos la que nos gus
     
     Y mucha buena intención y paciencia!!!!!
 
-También puedes mirar la lista de todos los contribuyentes quíenes han participado en este proyecto.
-
 //Licencia 📄
 
 Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo LICENSE.md para detalles
