@@ -64,6 +64,7 @@ function handleSearchSerie(e) {
   }
   e.currentTarget.classList.toggle('border');
   renderFavorites();
+  favoritesInLocalStorage();
 }
 
 function renderFavorites() {
@@ -107,5 +108,21 @@ function handlerButtonSearch(e) {
   e.preventDefault();
   fetchFunction();
 }
+function favoritesInLocalStorage(){
+//meto favoritos en mi LS
+localStorage.setItem('anime',JSON.stringify(favorites));
+}
+function favoritesFromLS(){
+    // sacar lo del LS y guardarlo en favorites, si nunca hemos hemos entrado antes en este buscador, 1º compuebro si tengo algo en LS
+ const savedFavorites = localStorage.getItem('anime');
+ if (savedFavorites === null) {
+     favorites =[];
+ } else {
+     favorites = JSON.parse(savedFavorites);
+ }
+ renderFavorites();
+}
+
+favoritesFromLS(); //ejecutamos cuando se carga la pagina, por eso va fuera de la funcion en la parte global.
 
 buttonSearch.addEventListener("click", handlerButtonSearch);
