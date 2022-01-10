@@ -4,6 +4,7 @@ const selection = document.querySelector(".js_selection_list");
 const inputSearch = document.querySelector(".js_input");
 const buttonSearch = document.querySelector(".js_search"); // no se si va el puesto o este: js_input - hay que poner un escuchador para que el boton buscar me de el resultado que busco.
 const favoriteList = document.querySelector(".js_favorite");
+const favList = document.querySelector(".js_selection_favorite");
 const errorImg = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
 
 let data = []; //array donde guardar mis datos de las series
@@ -75,7 +76,7 @@ function renderFavorites() {
 
 function renderFavoriteItem(favoriteItem) {
   if (favorites.image_url === null) {
-    selection.innerHTML += `
+    favList.innerHTML += `
                 <li class="js_add_serie data-id="${favoriteItem.mal_id}">
                 <img
                 class="js_img" 
@@ -84,7 +85,7 @@ function renderFavoriteItem(favoriteItem) {
                 <h2 class="title">${favoriteItem.title}</h2>
                 </li>`;
   } else {
-    selection.innerHTML += `
+    favList.innerHTML += `
                 <li class="js_add_serie data-id="${favoriteItem.mal_id}">
                 <img
                 class="js_img" 
