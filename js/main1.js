@@ -49,20 +49,20 @@ function renderAllSection() {
   const seriesLists = document.querySelectorAll(".js_add_serie");
   for (const eachseriesList of seriesLists) {
     eachseriesList.addEventListener("click", handleSearchSerie);
-}
+  }
 }
 
 function handleSearchSerie(e) {
   const selectedSerieID = e.currentTarget.dataset.id;
   const selectedSerieData = data.find((row) => row.mal_id === selectedSerieID); // busca en cada fila de data una cuyo nombre sea = a mi vble y me devuelve el objeto con toda esa fila y sino, null - me interesa guardar en vble.
-  const serieFavData = favorites.find (row => row.mal_id === selectedSerieID);
-// si ya está clickado no se añada otra vez
-  if (serieFavData === undefined){
-   favorites.push(selectedSerieData);   
-  }else{
-      console.log("Pues ya estaría");
+  const serieFavData = favorites.find((row) => row.mal_id === selectedSerieID);
+  // si ya está clickado no se añada otra vez
+  if (serieFavData === undefined) {
+    favorites.push(selectedSerieData);
+  } else {
+    console.log("Pues ya estaría");
   }
-  e.currentTarget.classList.toggle('border');
+  e.currentTarget.classList.toggle("border");
   renderFavorites();
   favoritesInLocalStorage();
 }
@@ -74,8 +74,8 @@ function renderFavorites() {
 }
 
 function renderFavoriteItem(favoriteItem) {
-    if (favorites.image_url === null) {
-        selection.innerHTML += `
+  if (favorites.image_url === null) {
+    selection.innerHTML += `
                 <li class="js_add_serie data-id="${favoriteItem.mal_id}">
                 <img
                 class="js_img" 
@@ -83,8 +83,8 @@ function renderFavoriteItem(favoriteItem) {
                 alt="Anime:${favoriteItem.title}"/>
                 <h2 class="title">${favoriteItem.title}</h2>
                 </li>`;
-      } else {
-        selection.innerHTML += `
+  } else {
+    selection.innerHTML += `
                 <li class="js_add_serie data-id="${favoriteItem.mal_id}">
                 <img
                 class="js_img" 
@@ -92,8 +92,8 @@ function renderFavoriteItem(favoriteItem) {
                 alt="Anime:${favoriteItem.title}"/>
                 <h2 class="title">${favoriteItem.title}</h2>
                 </li>`;
-      }
-/*  favoriteList.innerHTML += `
+  }
+  /*  favoriteList.innerHTML += `
 <li class="data-id="${favoriteItem.mal_id}">  
             <img 
             src="${favoriteItem.image_url}" 
@@ -108,19 +108,19 @@ function handlerButtonSearch(e) {
   e.preventDefault();
   fetchFunction();
 }
-function favoritesInLocalStorage(){
-//meto favoritos en mi LS
-localStorage.setItem('anime',JSON.stringify(favorites));
+function favoritesInLocalStorage() {
+  //meto favoritos en mi LS
+  localStorage.setItem("anime", JSON.stringify(favorites));
 }
-function favoritesFromLS(){
-    // sacar lo del LS y guardarlo en favorites, si nunca hemos hemos entrado antes en este buscador, 1º compuebro si tengo algo en LS
- const savedFavorites = localStorage.getItem('anime');
- if (savedFavorites === null) {
-     favorites =[];
- } else {
-     favorites = JSON.parse(savedFavorites);
- }
- renderFavorites();
+function favoritesFromLS() {
+  // sacar lo del LS y guardarlo en favorites, si nunca hemos hemos entrado antes en este buscador, 1º compuebro si tengo algo en LS
+  const savedFavorites = localStorage.getItem("anime");
+  if (savedFavorites === null) {
+    favorites = [];
+  } else {
+    favorites = JSON.parse(savedFavorites);
+  }
+  renderFavorites();
 }
 
 favoritesFromLS(); //ejecutamos cuando se carga la pagina, por eso va fuera de la funcion en la parte global.
